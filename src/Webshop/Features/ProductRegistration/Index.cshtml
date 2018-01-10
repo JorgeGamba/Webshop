@@ -1,0 +1,40 @@
+﻿@model Webshop.Features.ProductRegistration.NewProductInputModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Product Registration</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.DisplayNameFor(x => x.Number)
+            @Html.TextBoxFor(x => x.Number)
+        </div>
+        <div>
+            @Html.DisplayNameFor(x => x.Title)
+            @Html.TextBoxFor(x => x.Title)
+        </div>
+        <div>
+            @Html.DisplayNameFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price)
+        </div>
+        <div>
+            @Html.DisplayNameFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description)
+        </div>
+        <div>
+            <input type="submit" value="Register"/>
+        </div>
+    }
+    @Html.ValidationSummary()
+    @if (ViewBag.Message != null)
+    {
+        <div>@ViewBag.Message</div>
+    }
+</div>
+</body>
+</html>

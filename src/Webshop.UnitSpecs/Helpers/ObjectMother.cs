@@ -1,4 +1,5 @@
 ﻿using System;
+using Webshop.Features.ProductRegistration;
 using Webshop.Features.ProductSearch;
 
 namespace Webshop.UnitSpecs.Helpers
@@ -15,5 +16,8 @@ namespace Webshop.UnitSpecs.Helpers
 
         public static IFindProductsByTitleQuery CreateProductQueryThatFails() =>
             new FindProductsByTitleQueryFake(() => throw new Exception());
+
+        public static NewProductInputModel CreateNewProductInputModelWith(int number = 1, string title = "any title", decimal price = 2, string description = "any description") =>
+            new NewProductInputModel { Number = number, Title = title, Price = price, Description = description };
     }
 }

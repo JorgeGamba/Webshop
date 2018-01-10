@@ -5,7 +5,7 @@ using Webshop.Features.ProductSearch;
 using Webshop.Types;
 using Webshop.UnitSpecs.Helpers;
 
-namespace Webshop.UnitSpecs.Features
+namespace Webshop.UnitSpecs.Features.ProductSearch
 {
     public class ProductSearcherSpecs : FeatureSpecifications
     {

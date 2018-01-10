@@ -112,6 +112,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ByFeatureRazorViewEngine.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\ProductRegistration\ProductStoringDAO.cs" />
+    <Compile Include="Features\ProductRegistration\NewProductInputModel.cs" />
+    <Compile Include="Features\ProductRegistration\Product.cs" />
+    <Compile Include="Features\ProductRegistration\ProductRegister.cs" />
+    <Compile Include="Features\ProductRegistration\ProductRegistrationController.cs" />
+    <Compile Include="Features\ProductRegistration\ProductRegistrationResult.cs" />
     <Compile Include="Features\ProductSearch\FoundProduct.cs" />
     <Compile Include="Features\ProductSearch\FindProductsByTitleQuery.cs" />
     <Compile Include="Features\ProductSearch\ProductSearchResult.cs" />
@@ -128,6 +134,7 @@
   <ItemGroup>
     <Content Include="Features\web.config" />
     <Content Include="Features\ProductSearch\Index.cshtml" />
+    <Content Include="Features\ProductRegistration\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Features\Home\Index.cshtml" />
     <None Include="Web.Debug.config">

@@ -18,7 +18,18 @@ namespace Webshop.Types
         public static bool TryCreate(string rawText, out Text result)
         {
             result = new Text(rawText);
-            return !string.IsNullOrWhiteSpace(rawText);
+            return MeetsTheConstraints(rawText);
         }
+
+        public static Text Create(string rawText)
+        {
+            if (MeetsTheConstraints(rawText))
+                return new Text(rawText);
+
+            throw new Exception("The provided text does not meet the rules.");
+        }
+
+
+        private static bool MeetsTheConstraints(string rawText) => !string.IsNullOrWhiteSpace(rawText);
     }
 }

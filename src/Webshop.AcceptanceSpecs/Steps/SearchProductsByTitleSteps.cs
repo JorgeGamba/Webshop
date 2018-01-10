@@ -37,17 +37,17 @@ namespace Webshop.AcceptanceSpecs.Steps
         [Given]
         public void Given_there_are_no_products_that_match_the_searched_text()
         {
-            _inMemoryStorage.Insert(new StoredProduct(111, "Product abc", 1));
-            _inMemoryStorage.Insert(new StoredProduct(114, "Product def", 4));
+            _inMemoryStorage.Insert(new StoredProduct(1, 111, "Product abc", 1, "first product"));
+            _inMemoryStorage.Insert(new StoredProduct(4, 114, "Product def", 4, "fourth product"));
         }
 
         [Given]
         public void Given_there_are_multiple_products_that_match_the_searched_text()
         {
-            _inMemoryStorage.Insert(new StoredProduct(111, "Product abc", 1));
-            _inMemoryStorage.Insert(new StoredProduct(112, "Product bcd", 2));
-            _inMemoryStorage.Insert(new StoredProduct(113, "Product cde", 3));
-            _inMemoryStorage.Insert(new StoredProduct(114, "Product def", 4));
+            _inMemoryStorage.Insert(new StoredProduct(1, 111, "Product abc", 1, "first product"));
+            _inMemoryStorage.Insert(new StoredProduct(2, 112, "Product bcd", 2, "first product"));
+            _inMemoryStorage.Insert(new StoredProduct(3, 113, "Product cde", 3, "first product"));
+            _inMemoryStorage.Insert(new StoredProduct(4, 114, "Product def", 4, "first product"));
         }
         
         [When]

@@ -17,11 +17,11 @@ namespace Webshop.Features.ProductSearch
     {
         public IEnumerable<FoundProduct> Execute(Text searchText)
         {
-            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["WebshopDB"].ConnectionString))
+            var sql = "SELECT Number, Title, Price FROM Products WHERE Title LIKE @expression";
+            var parameter = new { expression = $"%{searchText.Value}%" };
+            using (IDbConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["WebshopDB"].ConnectionString))
             {
-                var sql = "SELECT Number, Title, Price FROM Products WHERE Title LIKE @expression";
-                var parameter = new { expression = $"%{searchText.Value}%" };
-                return db.Query<FoundProduct>(sql, parameter).ToList();
+                return connection.Query<FoundProduct>(sql, parameter).ToList();
             }
         }
     }

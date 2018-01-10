@@ -8,6 +8,7 @@ using System.Web.Routing;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using Webshop.Features.ProductRegistration;
 using Webshop.Features.ProductSearch;
 
 namespace Webshop
@@ -27,6 +28,8 @@ namespace Webshop
 
             container.Register<IFindProductsByTitleQuery, FindProductsByTitleDbQuery>(Lifestyle.Singleton);
             container.Register<ProductSearcher>(Lifestyle.Scoped);
+            container.Register<IProductStoringDAO, ProductStoringDbDao>(Lifestyle.Singleton);
+            container.Register<ProductRegister>(Lifestyle.Scoped);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 
