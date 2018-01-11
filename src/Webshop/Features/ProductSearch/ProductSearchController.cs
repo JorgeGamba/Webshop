@@ -5,11 +5,11 @@ namespace Webshop.Features.ProductSearch
 {
     public class ProductSearchController : Controller
     {
-        private readonly ProductSearcher _searcher;
+        private readonly FindProductsByTitleQueryFactory _productsQueryFactory;
 
-        public ProductSearchController(ProductSearcher searcher)
+        public ProductSearchController(FindProductsByTitleQueryFactory productsQueryFactory)
         {
-            _searcher = searcher;
+            _productsQueryFactory = productsQueryFactory;
         }
 
         // GET
@@ -17,7 +17,9 @@ namespace Webshop.Features.ProductSearch
         {
             if (Text.TryCreate(titleContains, out var searchText))
             {
-                var result = _searcher.SearchBy(searchText);
+                var workingOnMemory = (bool)(Session?["WorkingOnMemory"] ?? true);
+                var productsQuery = _productsQueryFactory.Create(workingOnMemory);
+                var result = ProductSearcher.Search(productsQuery, searchText);
                 return View(result);
             }
 

@@ -10,12 +10,12 @@ namespace Webshop.UnitSpecs.Features.ProductSearch
     public class ProductSearcherSpecs : FeatureSpecifications
     {
         public override void When() =>
-            _result = _searcher.SearchBy(_someSearchText);
+            _result = ProductSearcher.Search(_productsQuery, _someSearchText);
 
         public class When_matching_products_are_found : ProductSearcherSpecs
         {
             public override void Given() =>
-                _searcher = new ProductSearcher(ObjectMother.CreateProductQueryThatReturns(_someProduct, _otherProduct));
+                _productsQuery = ObjectMother.CreateProductQueryThatReturns(_someProduct, _otherProduct);
 
             [Test]
             public void Should_return_a_result() =>
@@ -33,7 +33,7 @@ namespace Webshop.UnitSpecs.Features.ProductSearch
         public class When_matching_products_are_not_found : ProductSearcherSpecs
         {
             public override void Given() =>
-                _searcher = new ProductSearcher(ObjectMother.CreateProductQueryThatReturns());
+                _productsQuery = ObjectMother.CreateProductQueryThatReturns();
 
             [Test]
             public void Should_return_a_result() =>
@@ -51,7 +51,7 @@ namespace Webshop.UnitSpecs.Features.ProductSearch
         public class When_the_query_produces_a_runtime_exception : ProductSearcherSpecs
         {
             public override void Given() =>
-                _searcher = new ProductSearcher(ObjectMother.CreateProductQueryThatFails());
+                _productsQuery = ObjectMother.CreateProductQueryThatFails();
 
             [Test]
             public void Should_return_a_result() =>
@@ -67,7 +67,7 @@ namespace Webshop.UnitSpecs.Features.ProductSearch
         }
 
 
-        ProductSearcher _searcher;
+        IFindProductsByTitleQuery _productsQuery;
         IProductSearchResult _result;
 
         static Text _someSearchText;

@@ -16,9 +16,8 @@ namespace Webshop.AcceptanceSpecs.Steps
         public RegistrationOfNewProductsSteps()
         {
             _inMemoryStorage = new InMemoryStorage();
-            var dao = new ProductStoringMemoryDao(_inMemoryStorage);
-            var register = new ProductRegister(dao);
-            _controller = new ProductRegistrationController(register);
+            var daoFactory = new ProductStoringDAOFactory(_inMemoryStorage);
+            _controller = new ProductRegistrationController(daoFactory);
         }
 
         [Given]

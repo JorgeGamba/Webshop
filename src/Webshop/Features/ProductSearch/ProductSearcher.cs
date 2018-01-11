@@ -7,19 +7,12 @@ namespace Webshop.Features.ProductSearch
 {
     public class ProductSearcher
     {
-        private readonly IFindProductsByTitleQuery _productsQuery;
-
-        public ProductSearcher(IFindProductsByTitleQuery productsQuery)
-        {
-            _productsQuery = productsQuery;
-        }
-
-        public IProductSearchResult SearchBy(Text searchText)
+        public static IProductSearchResult Search(IFindProductsByTitleQuery productsQuery, Text searchText)
         {
             ICollection<FoundProduct> foundProducts;
             try
             {
-                foundProducts = _productsQuery.Execute(searchText).ToList();
+                foundProducts = productsQuery.Execute(searchText).ToList();
             }
             catch (Exception)
             {

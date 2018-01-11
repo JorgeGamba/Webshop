@@ -17,9 +17,8 @@ namespace Webshop.AcceptanceSpecs.Steps
         public SearchProductsByTitleSteps()
         {
             _inMemoryStorage = new InMemoryStorage();
-            var productsQuery = new FindProductsByTitleMemoryQuery(_inMemoryStorage);
-            var searcher = new ProductSearcher(productsQuery);
-            _controller = new ProductSearchController(searcher);
+            var queryFactory = new FindProductsByTitleQueryFactory(_inMemoryStorage);
+            _controller = new ProductSearchController(queryFactory);
         }
 
         [Given]

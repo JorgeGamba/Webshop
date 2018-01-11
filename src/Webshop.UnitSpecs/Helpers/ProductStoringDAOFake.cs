@@ -8,6 +8,7 @@ namespace Webshop.UnitSpecs.Helpers
         private readonly bool _numberIsAlreadyUsed;
         private readonly bool _titleIsAlreadyUsed;
         private Func<Product, StoredProduct> _storeFunc;
+        private static int count;
 
         public ProductStoringDAOFake(bool numberIsAlreadyUsed, bool titleIsAlreadyUsed, bool storingFails = false)
         {
@@ -16,7 +17,7 @@ namespace Webshop.UnitSpecs.Helpers
             if (storingFails)
                 _storeFunc = product => throw new Exception();
             else
-                _storeFunc = product => new StoredProduct(product.Number, product.Title.Value, product.Price, product.Description.Value);
+                _storeFunc = product => new StoredProduct(count++, product.Number, product.Title.Value, product.Price, product.Description.Value);
         }
 
         public bool ThereIsAlreadySomeProductWith(int productNumber) => _numberIsAlreadyUsed;

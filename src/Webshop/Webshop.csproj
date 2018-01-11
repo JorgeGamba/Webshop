@@ -118,11 +118,14 @@
     <Compile Include="Features\ProductRegistration\ProductRegister.cs" />
     <Compile Include="Features\ProductRegistration\ProductRegistrationController.cs" />
     <Compile Include="Features\ProductRegistration\ProductRegistrationResult.cs" />
+    <Compile Include="Features\ProductRegistration\ProductStoringDAOFactory.cs" />
+    <Compile Include="Features\ProductSearch\FindProductsByTitleQueryFactory.cs" />
     <Compile Include="Features\ProductSearch\FoundProduct.cs" />
     <Compile Include="Features\ProductSearch\FindProductsByTitleQuery.cs" />
     <Compile Include="Features\ProductSearch\ProductSearchResult.cs" />
     <Compile Include="Features\ProductSearch\ProductSearchController.cs" />
     <Compile Include="Features\ProductSearch\ProductSearcher.cs" />
+    <Compile Include="Features\SettingsStorage\SettingsStorageController.cs" />
     <Compile Include="InMemoryStorage.cs" />
     <Compile Include="StoredProduct.cs" />
     <Compile Include="Types\Text.cs" />
@@ -135,6 +138,7 @@
     <Content Include="Features\web.config" />
     <Content Include="Features\ProductSearch\Index.cshtml" />
     <Content Include="Features\ProductRegistration\Index.cshtml" />
+    <Content Include="Features\SettingsStorage\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Features\Home\Index.cshtml" />
     <None Include="Web.Debug.config">

@@ -10,7 +10,7 @@ namespace Webshop.UnitSpecs.Features.ProductRegistration
     public class ProductRegisterSpecs : FeatureSpecifications
     {
         public override void When() => _exception = Catch.Exception(() =>
-            _result = new ProductRegister(_dao).Register(_newProduct)
+            _result = ProductRegister.Register(_dao, _newProduct)
         );
 
         public class When_the_new_product_accomplish_all_the_constraints : ProductRegisterSpecs
@@ -35,7 +35,7 @@ namespace Webshop.UnitSpecs.Features.ProductRegistration
 
             [Test]
             public void Should_return_a_result_with_the_actual_stored_product() =>
-                ((SuccessfulProductRegistrationResult) _result).StoredProduct.ShouldBeEquivalentTo(_newProduct);
+                ((SuccessfulProductRegistrationResult) _result).StoredProduct.Should().NotBeNull();
         }
 
         public class When_the_number_is_already_being_used_by_other_product : ProductRegisterSpecs

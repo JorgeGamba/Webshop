@@ -26,10 +26,9 @@ namespace Webshop
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
-            container.Register<IFindProductsByTitleQuery, FindProductsByTitleDbQuery>(Lifestyle.Singleton);
-            container.Register<ProductSearcher>(Lifestyle.Scoped);
-            container.Register<IProductStoringDAO, ProductStoringDbDao>(Lifestyle.Singleton);
-            container.Register<ProductRegister>(Lifestyle.Scoped);
+            container.Register<InMemoryStorage>(Lifestyle.Singleton);
+            container.Register<FindProductsByTitleQueryFactory>(Lifestyle.Singleton);
+            container.Register<ProductStoringDAOFactory>(Lifestyle.Singleton);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 

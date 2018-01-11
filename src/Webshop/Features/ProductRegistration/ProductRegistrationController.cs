@@ -4,11 +4,11 @@ namespace Webshop.Features.ProductRegistration
 {
     public class ProductRegistrationController : Controller
     {
-        private readonly ProductRegister _register;
+        private readonly ProductStoringDAOFactory _productsDAOFactory;
 
-        public ProductRegistrationController(ProductRegister register)
+        public ProductRegistrationController(ProductStoringDAOFactory productsDAOFactory)
         {
-            _register = register;
+            _productsDAOFactory = productsDAOFactory;
         }
 
         // GET
@@ -22,7 +22,9 @@ namespace Webshop.Features.ProductRegistration
         {
             if (ModelState.IsValid)
             {
-                var result = _register.Register(newProduct);
+                var workingOnMemory = (bool)(Session?["WorkingOnMemory"] ?? true);
+                var productsDAO = _productsDAOFactory.Create(workingOnMemory);
+                var result = ProductRegister.Register(productsDAO, newProduct);
                 if (result is SuccessfulProductRegistrationResult)
                     return RedirectToAction("Index", "Home");
                 if (result is FailedProductRegistrationResult failedResult)

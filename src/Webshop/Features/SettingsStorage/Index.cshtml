@@ -1,0 +1,24 @@
+﻿@model bool
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Settings - Storage</title>
+</head>
+<body>
+    @using (Html.BeginForm("Change", "SettingsStorage"))
+    {
+        <div>
+            @if (Model)
+            {
+                <input type="submit" value="Change the storage to database"/>
+            }
+            else
+            {
+                <input type="submit" value="Change the storage to memory"/>
+            }
+        </div>
+    }
+</body>
+</html>
