@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Creates the Products table.sql" />
     <Content Include="App_Data\WebshopDB.mdf" />
     <Content Include="App_Data\WebshopDB_log.ldf">
       <DependentUpon>WebshopDB.mdf</DependentUpon>
@@ -139,6 +140,7 @@
     <Content Include="Features\ProductSearch\Index.cshtml" />
     <Content Include="Features\ProductRegistration\Index.cshtml" />
     <Content Include="Features\SettingsStorage\Index.cshtml" />
+    <Content Include="Features\Shared\_Layout.cshtml" />
     <None Include="packages.config" />
     <Content Include="Features\Home\Index.cshtml" />
     <None Include="Web.Debug.config">

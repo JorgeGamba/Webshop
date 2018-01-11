@@ -1,5 +1,9 @@
 ﻿@model bool
 
+@{
+    Layout = "~/Features/Shared/_Layout.cshtml";
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -12,11 +16,11 @@
         <div>
             @if (Model)
             {
-                <input type="submit" value="Change the storage to database"/>
+                <input type="submit" value="Change the storage to database" />
             }
             else
             {
-                <input type="submit" value="Change the storage to memory"/>
+                <input type="submit" value="Change the storage to memory" />
             }
         </div>
     }

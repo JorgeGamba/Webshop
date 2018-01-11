@@ -1,6 +1,10 @@
 ﻿@using Webshop.Features.ProductSearch
 @model Webshop.Features.ProductSearch.IProductSearchResult
 
+@{
+    Layout = "~/Features/Shared/_Layout.cshtml";
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -8,35 +12,35 @@
     <title>Product search</title>
 </head>
 <body>
-<div>
-    @using (Html.BeginForm("Index", "ProductSearch", FormMethod.Get)) // It seems a little controversial to use a Get verb here, but the search task is clearly a Get operation
-        // TODO: Send the request always via query string
-    {
-        <span>Search: </span>
-        @Html.TextBox("TitleContains")
-        <input type="submit" value="Search"/>
-    }
-    @Html.ValidationSummary()
-    @if (Model is SuccessfulProductSearchResult successfulModel) // It's "presentation" logic, so it's okay manage it here in the view
-    {
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-            </tr>
-            @foreach (var foundProduct in successfulModel.FoundProducts)
-            {
+    <div>
+        @using (Html.BeginForm("Index", "ProductSearch", FormMethod.Get)) // It seems a little controversial to use a Get verb here, but the search task is clearly a Get operation
+                                                                         // TODO: Send the request always via query string
+        {
+            <span>Search: </span>
+            @Html.TextBox("TitleContains")
+            <input type="submit" value="Search" />
+        }
+        @Html.ValidationSummary()
+        @if (Model is SuccessfulProductSearchResult successfulModel) // It's "presentation" logic, so it's okay manage it here in the view
+        {
+            <table>
                 <tr>
-                    <td>@foundProduct.Title</td>
-                    <td>@foundProduct.Price</td>
+                    <th>Title</th>
+                    <th>Price</th>
                 </tr>
-            }
-        </table>
-    }
-    else if (Model is FailedProductSearchResult failedModel)
-    {
-        <p>@failedModel.Reason</p>
-    }
-</div>
+                @foreach (var foundProduct in successfulModel.FoundProducts)
+                {
+                    <tr>
+                        <td>@foundProduct.Title</td>
+                        <td>@foundProduct.Price</td>
+                    </tr>
+                }
+            </table>
+        }
+        else if (Model is FailedProductSearchResult failedModel)
+        {
+            <p>@failedModel.Reason</p>
+        }
+    </div>
 </body>
 </html>
